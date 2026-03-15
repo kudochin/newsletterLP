@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>理学療法士による健康相談 | あなたの「からだの悩み」に寄り添います</title>
+  <meta name="description" content="理学療法士が、関節痛・肩こり・腰痛などの身体のお悩みにオンラインで寄り添います。メール相談・オンライン対面相談（運動指導付き）の2つのプランをご用意。">
+  <meta property="og:title" content="理学療法士による健康相談">
+  <meta property="og:description" content="関節痛・肩こり・腰痛などのお悩みに、理学療法士が寄り添います。">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-content">
+      <div class="loading-line"></div>
+      <p class="loading-text">for your health</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header id="header">
+    <nav class="nav-container">
+      <a href="#" class="nav-logo">HEALTH CONSULTING</a>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#concerns">お悩み</a></li>
+        <li><a href="#philosophy">想い</a></li>
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#flow">ご利用の流れ</a></li>
+        <li><a href="#profile">プロフィール</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact" class="nav-cta">ご相談はこちら</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#concerns">お悩み</a></li>
+      <li><a href="#philosophy">想い</a></li>
+      <li><a href="#services">サービス</a></li>
+      <li><a href="#flow">ご利用の流れ</a></li>
+      <li><a href="#profile">プロフィール</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="mobile-cta">ご相談はこちら</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero">
+    <!-- Cinematic Morning Sequence (Video-like Slideshow) -->
+    <div class="hero-slideshow">
+      <div class="hero-slide active" style="background-image: url('images/morning_curtain.png')"></div>
+      <div class="hero-slide" style="background-image: url('images/hero_meditation.png')"></div>
+      <div class="hero-slide" style="background-image: url('images/morning_profile.png')"></div>
+      <div class="hero-slide" style="background-image: url('images/hero_online_exercise.png')"></div>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Slide Indicators -->
+    <div class="hero-indicators">
+      <button class="hero-indicator active" data-slide="0" aria-label="シーン1"></button>
+      <button class="hero-indicator" data-slide="1" aria-label="シーン2"></button>
+      <button class="hero-indicator" data-slide="2" aria-label="シーン3"></button>
+      <button class="hero-indicator" data-slide="3" aria-label="シーン4"></button>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-sub anim-fade-up emphasized">理学療法士による</p>
+      <h1 class="hero-title anim-fade-up" style="animation-delay: 0.3s;">
+        <span class="hero-title-line">からだの悩みに</span>
+        <span class="hero-title-line">寄り添う</span>
+        <span class="hero-title-line accent">健康相談</span>
+      </h1>
+      <p class="hero-desc anim-fade-up" style="animation-delay: 0.6s;">
+        関節痛・肩こり・腰痛…<br>
+        ひとりで抱えていませんか？
+      </p>
+      <a href="#contact" class="hero-cta anim-fade-up" style="animation-delay: 0.9s;">無料で相談する</a>
+    </div>
+    <div class="hero-scroll anim-fade-up" style="animation-delay: 1.2s;">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== CONCERNS SECTION ===== -->
+  <section id="concerns" class="section">
+    <div class="section-header reveal">
+      <p class="section-en">CONCERNS</p>
+      <h2 class="section-title">こんなお悩み<br>ありませんか？</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="concerns-grid">
+      <div class="concern-card reveal">
+        <div class="concern-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+            <path d="M12 44c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" />
+            <path d="M30 28l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M32 22l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h3>関節の痛み</h3>
+        <p>膝や股関節の痛みで<br>歩くのがつらい</p>
+      </div>
+      <div class="concern-card reveal" style="animation-delay: 0.1s;">
+        <div class="concern-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 8c-4 0-8 2-10 6s-2 10 2 14c2 2 4 6 4 10h8c0-4 2-8 4-10 4-4 4-10 2-14s-6-6-10-6z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M20 38h8M21 42h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h3>肩こり・頭痛</h3>
+        <p>慢性的な肩こりや<br>頭痛に悩んでいる</p>
+      </div>
+      <div class="concern-card reveal" style="animation-delay: 0.2s;">
+        <div class="concern-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 16c0-2 2-4 4-4h12c2 0 4 2 4 4v16c0 2-2 4-4 4H18c-2 0-4-2-4-4V16z" stroke="currentColor"
+              stroke-width="1.5" />
+            <path d="M20 20h8M20 26h8M20 32h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M24 8v4M34 12l-2 3M14 12l2 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h3>腰の痛み</h3>
+        <p>長時間のデスクワークで<br>腰がつらい</p>
+      </div>
+      <div class="concern-card reveal" style="animation-delay: 0.3s;">
+        <div class="concern-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5" />
+            <path d="M24 16v8l6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M16 8l-2-2M32 8l2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h3>運動不足</h3>
+        <p>何から始めていいか<br>わからない</p>
+      </div>
+      <div class="concern-card reveal" style="animation-delay: 0.4s;">
+        <div class="concern-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6C14 6 6 14 6 24s8 18 18 18 18-8 18-18S34 6 24 6z" stroke="currentColor" stroke-width="1.5" />
+            <path d="M16 28c2 4 5 6 8 6s6-2 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="18" cy="20" r="2" fill="currentColor" />
+            <circle cx="30" cy="20" r="2" fill="currentColor" />
+          </svg>
+        </div>
+        <h3>姿勢の悩み</h3>
+        <p>猫背や反り腰が<br>気になる</p>
+      </div>
+      <div class="concern-card reveal" style="animation-delay: 0.5s;">
+        <div class="concern-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 4l4 8 8 2-6 6 2 8-8-4-8 4 2-8-6-6 8-2 4-8z" stroke="currentColor" stroke-width="1.5"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3>不調が続く</h3>
+        <p>病院に行くほどではないが<br>体調がすっきりしない</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHILOSOPHY SECTION ===== -->
+  <section id="philosophy" class="section section-alt section-with-bg">
+    <div class="philosophy-wrapper">
+      <div class="philosophy-deco reveal-left">
+        <div class="deco-line"></div>
+      </div>
+      <div class="philosophy-content reveal">
+        <p class="section-en">PHILOSOPHY</p>
+        <h2 class="philosophy-title">
+          あなたの「からだ」に<br>
+          寄り添いたい
+        </h2>
+        <div class="philosophy-text">
+          <p>
+            病院に行くほどではないけれど、<br>
+            なんとなく身体の調子が悪い。<br>
+            そんな小さな不調を、<br>
+            誰に相談していいかわからない——
+          </p>
+          <p>
+            理学療法士として、<br>
+            多くの患者さまと向き合ってきた中で、<br>
+            「もっと早く相談してくれていたら」<br>
+            と感じることが何度もありました。
+          </p>
+          <p>
+            身体の悩みは、<br>
+            放っておくほど大きくなるもの。<br>
+            だからこそ、<br>
+            気軽に相談できる場所をつくりたい。
+          </p>
+          <p>
+            あなたの日常に寄り添い、<br>
+            健やかな毎日をサポートする。<br>
+            それが、この健康相談の想いです。
+          </p>
+        </div>
+      </div>
+      <div class="philosophy-deco-right reveal-right">
+        <div class="deco-circle"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES SECTION ===== -->
+  <section id="services" class="section">
+    <div class="section-header reveal">
+      <p class="section-en">SERVICES</p>
+      <h2 class="section-title">2つの相談プラン</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">あなたのライフスタイルに合わせて<br>お選びいただけます</p>
+    </div>
+
+    <div class="services-container">
+      <!-- Service 1: Email -->
+      <div class="service-card reveal-left">
+        <div class="service-number">01</div>
+        <div class="service-image-wrapper">
+          <img src="images/service_email.png" alt="メール相談" class="service-image">
+        </div>
+        <div class="service-info">
+          <h3 class="service-name">メール相談 <span class="price-badge free">無料</span></h3>
+          <p class="service-en">E-mail Consulting</p>
+          <div class="service-divider"></div>
+          <p class="service-desc">
+            お悩みをメールでお送りいただき、理学療法士が丁寧にアドバイスをお返しします。お好きな時間に、ご自身のペースでご相談いただけます。
+          </p>
+          <ul class="service-features">
+            <li>
+              <span class="feature-icon">✓</span>
+              24時間いつでもメール送信可能
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              48時間以内に返信
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              セルフケアのアドバイス
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              写真を添付して相談OK
+            </li>
+          </ul>
+          <p class="service-recommend">忙しい方・まずは気軽に相談したい方におすすめ</p>
+        </div>
+      </div>
+
+      <!-- Service 2: Online -->
+      <div class="service-card reverse reveal-right">
+        <div class="service-number">02</div>
+        <div class="service-image-wrapper">
+          <img src="images/service_online.png" alt="オンライン対面相談" class="service-image">
+        </div>
+        <div class="service-info">
+          <h3 class="service-name">オンライン対面相談 <span class="price-badge paid">有料</span> <span class="price-badge prep">※準備中</span></h3>
+          <p class="service-en">Online Face-to-Face Consulting</p>
+          <div class="service-divider"></div>
+          <p class="service-desc">
+            ビデオ通話で直接お話しながら、お身体の状態を確認。あなたに合った運動指導もその場で行います。
+          </p>
+          <ul class="service-features">
+            <li>
+              <span class="feature-icon">✓</span>
+              ビデオ通話でリアルタイム相談
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              動作チェック＆分析
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              あなた専用の運動メニュー作成
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              その場で運動指導
+            </li>
+          </ul>
+          <p class="service-recommend">しっかり相談したい方・運動指導を受けたい方におすすめ</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-notice reveal">
+      <p>※
+        本サービスは健康に関するコンサルティング（アドバイス）です。「こんな運動はいかがでしょうか」「こういった食事に変えてみてはいかがでしょうか」「こういった生活習慣に変えてみてはどうですか」「こんなセルフケアがおすすめですよ」「そういった場合は病院に行った方が良いですよ」など、あくまで生活習慣や運動・食事に関するアドバイスを行うサービスです。
+      </p>
+      <p>※ 法律上、疾患の診断・医療行為など、医師法や薬機法等に抵触する行為は行うことができません。予めご了承ください。</p>
+    </div>
+  </section>
+
+  <!-- ===== FLOW SECTION ===== -->
+  <section id="flow" class="section section-alt section-with-bg">
+    <div class="section-header reveal">
+      <p class="section-en">FLOW</p>
+      <h2 class="section-title">ご利用の流れ</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="flow-patterns">
+      <!-- パターン1 -->
+      <div class="flow-track reveal">
+        <h3 class="flow-track-title">① メール相談の場合 <span class="price-badge free">無料</span></h3>
+        <div class="flow-container">
+          <div class="flow-step">
+            <div class="flow-number">01</div>
+            <div class="flow-content">
+              <h3>必要事項を記入・送信</h3>
+              <p>ページ下部のフォームより、必要事項とご相談内容をご記入の上、送信してください。</p>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-step">
+            <div class="flow-number">02</div>
+            <div class="flow-content">
+              <h3>返信にて回答</h3>
+              <p>理学療法士が内容を確認し、メールの返信にて丁寧に回答・アドバイスいたします。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- パターン2 -->
+      <div class="flow-track reveal mt-5">
+        <h3 class="flow-track-title">② オンライン対面相談の場合 <span class="price-badge paid">有料</span> <span class="price-badge prep">※準備中</span></h3>
+        <div class="flow-container">
+          <div class="flow-step">
+            <div class="flow-number">01</div>
+            <div class="flow-content">
+              <h3>必要事項を記入・日程調整</h3>
+              <p>専用フォームよりお申し込みください。担当者より日程調整のご連絡をいたします。</p>
+            </div>
+          </div>
+          <div class="flow-connector"></div>
+          <div class="flow-step">
+            <div class="flow-number">02</div>
+            <div class="flow-content">
+              <h3>面談の実施・フォロー</h3>
+              <p>ビデオ通話で面談を実施し、運動指導などを行います。その後のフォローも行います。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROFILE SECTION ===== -->
+  <section id="profile" class="section">
+    <div class="profile-wrapper">
+      <div class="profile-image-area reveal-left">
+        <div class="profile-image-frame">
+          <div class="profile-image">
+            <img src="images/therapist_image.png" alt="工藤 正希" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 20px;">
+          </div>
+        </div>
+      </div>
+      <div class="profile-content reveal-right">
+        <p class="section-en">PROFILE</p>
+        <h2 class="profile-name">工藤 正希 <span style="font-size: 1rem; color: var(--text-secondary); margin-left: 0.5rem;">(理学療法士)</span></h2>
+        <p class="profile-name-en">Masaki Kudo - Physical Therapist</p>
+        <div class="profile-divider"></div>
+        <div class="profile-text">
+          <p>
+            はじめまして。理学療法士の工藤正希です。<br>
+            これまで14年間、整形外科領域を中心に関節痛専門の理学療法士として、3万人以上の方々のリハビリテーションに関わってまいりました。
+          </p>
+          <p>
+            日々の診療の中で、身体の痛みは単なる「関節や筋肉の問題」だけではないことに気づきました。<br>
+            そこで、<strong>運動 × 食事 × 精神</strong>の3つを掛け合わせた独自の視点「ペイン・カスケード理論（Pain Cascade Theory）」を提唱しています。
+          </p>
+          <p>
+            「どこに行っても良くならない」「何が原因かわからない」といったお悩みに、多角的な視点からアプローチし、あなたに最適な解決策を一緒に見つけていきます。病院に行くほどではない小さな不調でも、ぜひお気軽にご相談くださいね。
+          </p>
+        </div>
+        
+        <div class="profile-links" style="margin-top: 1rem; margin-bottom: 1.5rem; display: flex; gap: 1rem;">
+          <a href="https://x.com/kudochinPT" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; color: var(--accent-pink-dark); transition: opacity 0.3s;">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            X (Twitter)
+          </a>
+          <a href="https://note.com/kudochin_dlc" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; color: var(--accent-pink-dark); transition: opacity 0.3s;">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+              <path d="M15.904 2.127c-1.088 0-2.078.132-3.373.535C11.236 3.064 4.262 6.27 3.1 6.9c-1.163.63-1.555 1.207-1.555 2.682v8.358c0 1.838.587 2.65 2.075 3.482 1.487.833 7.044 3.55 8.155 4.1 1.112.55 1.904.772 3.326.772 1.422 0 2.358-.413 3.523-1.043s5.2-2.827 6.082-3.372c.882-.545 1.294-1.14 1.294-2.79V10.8c0-1.508-.437-2.16-1.658-2.873-1.222-.713-7.356-3.873-8.438-4.442-.556-.292-1.218-.535-2.223-.535-.442 0-.923.05-1.447.157l.07.02z" />
+            </svg>
+            note
+          </a>
+        </div>
+
+        <div class="profile-qualifications">
+          <h4>保有資格・経歴</h4>
+          <ul>
+            <li>理学療法士（国家資格）</li>
+            <li>Somatic Flow®︎指導者養成コース修了</li>
+            <li>Classical Osteopathy basic corse修了</li>
+            <li>Classical Osteopathy 国際セミナー参加</li>
+            <li>Vanakkam Yoga school ワークショップ多数参加</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKS / PUBLICATIONS SECTION ===== -->
+  <section id="books" class="section">
+    <div class="section-header reveal">
+      <p class="section-en">PUBLICATIONS</p>
+      <h2 class="section-title">著書のご紹介</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Kindleにて書籍を出版しております。<br>専門家としての知見をわかりやすくまとめました。</p>
+    </div>
+    <div class="books-grid">
+      <a href="https://www.amazon.co.jp/-/en/%E5%B7%A5%E8%97%A4%E6%AD%A3%E5%B8%8C-ebook/dp/B0GF92J947" target="_blank"
+        rel="noopener noreferrer" class="book-card reveal">
+        <div class="book-cover-wrapper">
+          <img src="kindle/①.jpg" alt="Kindle書籍1" class="book-cover" loading="lazy">
+          <div class="book-badge">Kindle</div>
+        </div>
+        <span class="book-link">Amazonで見る →</span>
+      </a>
+      <a href="https://www.amazon.co.jp/-/en/%E5%B7%A5%E8%97%A4%E6%AD%A3%E5%B8%8C-ebook/dp/B0GBQ7FS57" target="_blank"
+        rel="noopener noreferrer" class="book-card reveal" style="animation-delay: 0.15s;">
+        <div class="book-cover-wrapper">
+          <img src="kindle/②.jpg" alt="Kindle書籍2" class="book-cover" loading="lazy">
+          <div class="book-badge">Kindle</div>
+        </div>
+        <span class="book-link">Amazonで見る →</span>
+      </a>
+      <a href="https://www.amazon.co.jp/-/en/%E5%B7%A5%E8%97%A4%E6%AD%A3%E5%B8%8C-ebook/dp/B0GK6KRWTJ" target="_blank"
+        rel="noopener noreferrer" class="book-card reveal" style="animation-delay: 0.3s;">
+        <div class="book-cover-wrapper">
+          <img src="kindle/③.png" alt="Kindle書籍3" class="book-cover" loading="lazy">
+          <div class="book-badge">Kindle</div>
+        </div>
+        <span class="book-link">Amazonで見る →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== VOICE SECTION ===== -->
+  <section id="voice" class="section section-alt">
+    <div class="section-header reveal">
+      <p class="section-en">VOICE</p>
+      <h2 class="section-title">ご利用者さまの声</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="voice-container">
+      <div class="voice-card reveal">
+        <div class="voice-quote">"</div>
+        <p class="voice-text">
+          膝の痛みで整形外科に行くか迷っていた時に相談しました。自宅でできるストレッチを教えていただき、2週間ほどで痛みが和らぎました。病院に行く前に相談して本当によかったです。
+        </p>
+        <div class="voice-author">
+          <span class="voice-age">50代女性</span>
+          <span class="voice-plan">オンライン相談ご利用</span>
+        </div>
+      </div>
+      <div class="voice-card reveal" style="animation-delay: 0.15s;">
+        <div class="voice-quote">"</div>
+        <p class="voice-text">
+          デスクワークでの肩こりが本当にひどくて…。メールで相談したところ、姿勢のポイントや休憩時にできる運動を丁寧に教えてくださいました。とても助かっています。
+        </p>
+        <div class="voice-author">
+          <span class="voice-age">30代女性</span>
+          <span class="voice-plan">メール相談ご利用</span>
+        </div>
+      </div>
+      <div class="voice-card reveal" style="animation-delay: 0.3s;">
+        <div class="voice-quote">"</div>
+        <p class="voice-text">
+          運動を始めたいけど何からすればいいかわからず相談しました。オンラインで実際に動きを見てもらいながら指導してもらえるので、安心して運動を始められました。
+        </p>
+        <div class="voice-author">
+          <span class="voice-age">40代女性</span>
+          <span class="voice-plan">オンライン相談ご利用</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ SECTION ===== -->
+  <section id="faq" class="section section-with-bg">
+    <div class="section-header reveal">
+      <p class="section-en">FAQ</p>
+      <h2 class="section-title">よくあるご質問</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>医療行為は行いますか？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>いいえ、医療行為は行いません。身体に関する一般的なアドバイスやセルフケアの方法、運動指導をご提供します。症状がひどい場合は、医療機関の受診をおすすめすることもあります。</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>どのような悩みを相談できますか？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>関節痛、肩こり、腰痛、姿勢の悩み、運動不足、体力低下など、身体に関するお悩み全般をご相談いただけます。</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>オンライン相談に必要なものはありますか？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>インターネット環境と、カメラ付きのパソコンまたはスマートフォンがあればご利用いただけます。動きやすい服装でのご参加をおすすめします。</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>相談は何回でもできますか？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>はい、何度でもご利用いただけます。継続的なフォローアップもお受けしております。</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>相談の時間はどのくらいですか？</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>オンライン対面相談は1回約45〜60分を目安としています。メール相談はお好きなタイミングでお送りいただけます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / CONTACT SECTION ===== -->
+  <section id="contact" class="section section-cta">
+    <div class="cta-header reveal">
+      <p class="section-en light">CONTACT / FORM</p>
+      <h2 class="cta-title">
+        まずは気軽に<br>
+        ご相談ください
+      </h2>
+      <p class="cta-desc">
+        あなたの「からだの悩み」に理学療法士がお答えします。<br>
+        以下のフォームより<strong>メール相談（無料）</strong>をご利用いただけます。
+      </p>
+    </div>
+
+    <div class="contact-form-wrapper reveal">
+      <form action="#" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">お名前 <span class="required">必須</span></label>
+          <input type="text" id="name" name="name" required placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label for="email">メールアドレス <span class="required">必須</span></label>
+          <input type="email" id="email" name="email" required placeholder="example@example.com">
+        </div>
+        <div class="form-group">
+          <label for="age">ご年齢</label>
+          <select id="age" name="age">
+            <option value="">選択してください</option>
+            <option value="20代">20代</option>
+            <option value="30代">30代</option>
+            <option value="40代">40代</option>
+            <option value="50代">50代</option>
+            <option value="60代以上">60代以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">ご相談内容 <span class="required">必須</span></label>
+          <p style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.5rem;">
+            「どこがいつから痛いか？」など詳細に教えていただけると、より的確なアドバイスが可能です。自由に記入してください。
+          </p>
+          <textarea id="message" name="message" rows="6" class="conversational-placeholder" required placeholder="【記入例】2週間前くらいから、歩いていると右の膝が痛く感じるようになってきました。何もしなければ痛くないのですが、5分くらい歩くとズキズキ痛くなってきます。病院に行くべきですか？または自宅でできるケアはありますか？"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">メールを送信する</button>
+        <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 1rem; text-align: center; line-height: 1.6;">
+          ※ できるだけ数日以内に返信いたしますが、事情により返信が遅くなってしまう場合がありますので、あらかじめご了承ください。
+        </p>
+      </form>
+      
+      <div class="online-booking-section">
+        <p class="online-booking-desc">オンライン対面相談（有料）をご希望の方はこちら<br><span class="highlight-yellow">※現在準備中です</span></p>
+        <a href="#" class="cta-button secondary disabled" onclick="event.preventDefault();">
+          <svg viewBox="0 0 24 24" fill="none" class="cta-icon">
+            <rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5" />
+            <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+          オンライン相談を予約する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="footer-content">
+      <p class="footer-logo">HEALTH CONSULTING</p>
+      <p class="footer-tagline">理学療法士による健康相談</p>
+      <div class="footer-social">
+        <a href="https://x.com/kudochinPT" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+          X
+        </a>
+        <a href="https://note.com/kudochin_dlc" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M15.904 2.127c-1.088 0-2.078.132-3.373.535C11.236 3.064 4.262 6.27 3.1 6.9c-1.163.63-1.555 1.207-1.555 2.682v8.358c0 1.838.587 2.65 2.075 3.482 1.487.833 7.044 3.55 8.155 4.1 1.112.55 1.904.772 3.326.772 1.422 0 2.358-.413 3.523-1.043s5.2-2.827 6.082-3.372c.882-.545 1.294-1.14 1.294-2.79V10.8c0-1.508-.437-2.16-1.658-2.873-1.222-.713-7.356-3.873-8.438-4.442-.556-.292-1.218-.535-2.223-.535-.442 0-.923.05-1.447.157l.07.02z" />
+          </svg>
+          note
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="#hero">HOME</a>
+        <a href="#services">サービス</a>
+        <a href="#profile">プロフィール</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Health Consulting. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
