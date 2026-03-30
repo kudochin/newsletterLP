@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理画面 | Health Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>HEALTH CONSULTING</h1>
+        <p>管理画面</p>
+      </div>
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="admin-password">パスワード</label>
+          <input type="password" id="admin-password" required placeholder="パスワードを入力">
+        </div>
+        <button type="submit" class="btn-primary">ログイン</button>
+        <p id="login-error" class="login-error hidden">パスワードが正しくありません</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Main -->
+  <div id="admin-app" class="admin-app hidden">
+    <header class="admin-header">
+      <div class="admin-nav">
+        <h1 class="admin-logo">HEALTH CONSULTING <span>管理画面</span></h1>
+        <div class="admin-actions">
+          <a href="/" class="link-btn">サイトを見る</a>
+          <button id="logout-btn" class="link-btn">ログアウト</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="availability">予約枠の管理</button>
+      <button class="tab-btn" data-tab="bookings">予約一覧</button>
+    </div>
+
+    <main class="admin-main">
+
+      <!-- Tab: Availability Management -->
+      <section id="tab-availability" class="tab-content active">
+        <div class="admin-section">
+          <div class="calendar-nav">
+            <button id="admin-prev-month" class="nav-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <h2 id="admin-month-title" class="month-title"></h2>
+            <button id="admin-next-month" class="nav-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <div class="admin-calendar-wrapper">
+            <div class="admin-calendar">
+              <div class="admin-weekdays">
+                <span class="sun">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="sat">土</span>
+              </div>
+              <div id="admin-calendar-days" class="admin-days"></div>
+            </div>
+
+            <div class="slot-editor" id="slot-editor">
+              <h3 id="slot-editor-title" class="slot-editor-title">日付を選択してください</h3>
+              <div id="slot-editor-content" class="slot-editor-content">
+                <p class="slot-editor-hint">カレンダーの日付をクリックして、予約可能な時間帯を設定できます。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab: Bookings List -->
+      <section id="tab-bookings" class="tab-content">
+        <div class="admin-section">
+          <div class="calendar-nav">
+            <button id="bookings-prev-month" class="nav-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <h2 id="bookings-month-title" class="month-title"></h2>
+            <button id="bookings-next-month" class="nav-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <div id="bookings-list" class="bookings-list">
+            <p class="empty-msg">読み込み中...</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden">
+    <span id="toast-message"></span>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>

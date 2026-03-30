@@ -1,0 +1,528 @@
+/* ===================================================
+   Admin Panel — Styles
+   =================================================== */
+
+:root {
+  --accent-pink: #D4919B;
+  --accent-pink-dark: #B86B77;
+  --accent-pink-light: #F2D5D9;
+  --text-primary: #2D2D2D;
+  --text-secondary: #5A5A5A;
+  --text-light: #8A8A8A;
+  --white: #FFFFFF;
+  --off-white: #FAFAF8;
+  --cream: #F5F0EB;
+  --border-color: #E8E4DF;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --danger: #e74c3c;
+  --success: #27ae60;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--off-white);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.hidden { display: none !important; }
+
+/* ---- Login ---- */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--off-white), var(--cream));
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+.login-header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.25rem;
+}
+
+.login-header p {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.login-form .form-group {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.login-form label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  background: var(--off-white);
+  transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+  border-color: var(--accent-pink);
+}
+
+.login-error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* ---- Buttons ---- */
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--accent-pink);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover { background: var(--accent-pink-dark); }
+
+.link-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.link-btn:hover { color: var(--accent-pink-dark); }
+
+/* ---- Admin Header ---- */
+.admin-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-logo {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.admin-logo span {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-left: 0.5rem;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* ---- Tabs ---- */
+.tab-nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab-btn:hover { color: var(--text-primary); }
+
+.tab-btn.active {
+  color: var(--accent-pink-dark);
+  font-weight: 500;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-pink);
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ---- Admin Main ---- */
+.admin-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+}
+
+/* ---- Calendar Navigation ---- */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  color: var(--text-secondary);
+}
+
+.nav-btn:hover {
+  border-color: var(--accent-pink);
+  color: var(--accent-pink-dark);
+}
+
+.nav-btn svg { width: 16px; height: 16px; }
+
+.month-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  min-width: 150px;
+  text-align: center;
+}
+
+/* ---- Admin Calendar ---- */
+.admin-calendar-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+}
+
+.admin-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.admin-weekdays .sun { color: #D4696F; }
+.admin-weekdays .sat { color: #6B9BD2; }
+
+.admin-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.admin-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  position: relative;
+  gap: 2px;
+}
+
+.admin-day.empty { visibility: hidden; }
+
+.admin-day:hover:not(.empty) {
+  background: var(--off-white);
+  border-color: var(--accent-pink-light);
+}
+
+.admin-day.selected {
+  background: var(--accent-pink-light);
+  border-color: var(--accent-pink);
+}
+
+.admin-day.has-slots .day-count {
+  font-size: 0.6rem;
+  color: var(--accent-pink-dark);
+  font-weight: 500;
+}
+
+.admin-day.has-bookings::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+/* ---- Slot Editor ---- */
+.slot-editor {
+  background: var(--off-white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.slot-editor-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.slot-editor-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.slot-editor-content { min-height: 200px; }
+
+.time-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-toggle {
+  padding: 0.6rem 0.5rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-family: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.time-toggle:hover {
+  border-color: var(--accent-pink);
+}
+
+.time-toggle.active {
+  background: var(--accent-pink);
+  color: var(--white);
+  border-color: var(--accent-pink);
+}
+
+.time-toggle.booked {
+  background: #f0f0f0;
+  color: #999;
+  border-color: #ddd;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.slot-save-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--accent-pink);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slot-save-btn:hover { background: var(--accent-pink-dark); }
+
+/* ---- Bookings List ---- */
+.bookings-list {
+  min-height: 200px;
+}
+
+.empty-msg {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  padding: 3rem 0;
+}
+
+.booking-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.2s;
+}
+
+.booking-item:hover { background: var(--off-white); }
+
+.booking-item:last-child { border-bottom: none; }
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.booking-datetime {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.booking-customer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.booking-email {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.cancel-btn {
+  padding: 0.4rem 0.8rem;
+  background: none;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.cancel-btn:hover {
+  background: var(--danger);
+  color: var(--white);
+}
+
+/* ---- Toast ---- */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  z-index: 1000;
+  animation: fadeInUp 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.toast.success { background: var(--success); }
+.toast.error { background: var(--danger); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .admin-nav {
+    padding: 0.85rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tab-nav { padding: 0 1rem; }
+
+  .admin-main { padding: 1rem; }
+
+  .admin-section { padding: 1.25rem; }
+
+  .admin-calendar-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-editor { margin-top: 1rem; }
+
+  .time-toggle-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .booking-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

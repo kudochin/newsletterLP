@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ご予約完了 | かかりつけの理学療法士</title>
+  <meta name="description" content="オンライン相談のご予約・お支払いが完了しました。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V367C74YNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V367C74YNX');
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="booking-header">
+    <nav class="booking-nav">
+      <a href="/online.html" class="nav-logo">HEALTH CONSULTING</a>
+      <a href="/online.html" class="nav-back">← オンライン相談ページへ戻る</a>
+    </nav>
+  </header>
+
+  <main class="booking-main">
+    <!-- Step Indicator (all completed) -->
+    <div class="step-indicator">
+      <div class="step completed" data-step="1">
+        <div class="step-number">✓</div>
+        <span class="step-label">日時を選択</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step completed" data-step="2">
+        <div class="step-number">✓</div>
+        <span class="step-label">情報を入力</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step active" data-step="3">
+        <div class="step-number">✓</div>
+        <span class="step-label">予約完了</span>
+      </div>
+    </div>
+
+    <!-- Completion Content -->
+    <section class="booking-step active">
+      <div class="complete-container">
+        <div class="complete-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2 class="complete-title">ご予約ありがとうございます</h2>
+        <p class="complete-message">
+          ご予約・お支払いが完了しました。<br>
+          ご入力いただいたメールアドレスに<br>
+          予約確認メールをお送りしましたのでご確認ください。<br><br>
+          メールにビデオ通話（Google Meet）のURLを<br>
+          記載しておりますので、当日はそちらからご参加ください。
+        </p>
+        <div class="complete-details" id="complete-details">
+          <p style="text-align: center; color: var(--text-light); font-size: 0.85rem;">
+            予約内容は確認メールをご覧ください
+          </p>
+        </div>
+        <a href="/online.html" class="btn-primary">オンライン相談ページへ戻る</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="booking-footer">
+    <p>&copy; 2026 Health Consulting. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

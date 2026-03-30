@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>送信完了 | からだの悩みに寄り添う健康相談</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --accent-pink: #D4919B;
+      --accent-pink-dark: #B86B77;
+      --text-primary: #2D2D2D;
+      --text-secondary: #5A5A5A;
+      --text-light: #8A8A8A;
+      --white: #FFFFFF;
+      --off-white: #FAFAF8;
+      --cream: #F5F0EB;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--off-white);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .thank-you-container {
+      max-width: 560px;
+      width: 100%;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .check-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .check-icon svg {
+      width: 32px;
+      height: 32px;
+      color: var(--accent-pink-dark);
+    }
+
+    .thank-you-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .thank-you-message {
+      font-size: 0.95rem;
+      line-height: 2;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .thank-you-message strong {
+      color: var(--accent-pink-dark);
+    }
+
+    .x-link {
+      color: var(--accent-pink-dark);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed var(--accent-pink);
+      transition: opacity 0.3s;
+    }
+
+    .x-link:hover {
+      opacity: 0.7;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--accent-pink);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      margin-top: 0.5rem;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-pink-dark);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="thank-you-container">
+    <div class="check-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h1 class="thank-you-title">ご相談ありがとうございます</h1>
+    <p class="thank-you-message">
+      メールを受け付けました。<br>
+      <strong>2〜3日以内</strong>にご返信いたします。<br><br>
+      返信が届かない場合や、お急ぎの場合は<br>
+      お手数ですが <a href="https://x.com/kudochinPT" target="_blank" rel="noopener noreferrer" class="x-link">X（Twitter）のDM</a> にてご連絡ください。
+    </p>
+    <a href="/" class="back-btn">トップページへ戻る</a>
+  </div>
+</body>
+
+</html>

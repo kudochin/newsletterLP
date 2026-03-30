@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>オンライン相談予約 | かかりつけの理学療法士</title>
+  <meta name="description" content="理学療法士によるオンライン相談の予約ページです。ご希望の日時をお選びください。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V367C74YNX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V367C74YNX');
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="booking-header">
+    <nav class="booking-nav">
+      <a href="/online.html" class="nav-logo">HEALTH CONSULTING</a>
+      <a href="/online.html" class="nav-back">← オンライン相談ページへ戻る</a>
+    </nav>
+  </header>
+
+  <main class="booking-main">
+    <!-- Plan Info -->
+    <div class="plan-info-badge">
+      <span class="plan-name">お試しオンライン相談（1回）</span>
+      <span class="plan-price"><span class="yen">¥</span>2,980<span class="tax">（税込）</span></span>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="step-indicator">
+      <div class="step active" data-step="1">
+        <div class="step-number">1</div>
+        <span class="step-label">日時を選択</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="2">
+        <div class="step-number">2</div>
+        <span class="step-label">情報を入力</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="3">
+        <div class="step-number">3</div>
+        <span class="step-label">予約確認</span>
+      </div>
+    </div>
+
+    <!-- STEP 1: Date & Time Selection -->
+    <section id="step-datetime" class="booking-step active">
+      <div class="section-header-booking">
+        <p class="section-en">BOOKING</p>
+        <h1 class="section-title-booking">オンライン相談予約</h1>
+        <p class="section-desc-booking">ご希望の日時をお選びください</p>
+      </div>
+
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button id="prev-month" class="calendar-nav-btn" aria-label="前月">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <h2 id="calendar-month-title" class="calendar-month-title"></h2>
+          <button id="next-month" class="calendar-nav-btn" aria-label="次月">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="calendar-legend">
+          <div class="legend-item"><span class="legend-dot available"></span>予約可能</div>
+          <div class="legend-item"><span class="legend-dot unavailable"></span>予約不可</div>
+        </div>
+
+        <div class="calendar-grid">
+          <div class="calendar-weekdays">
+            <span class="weekday sun">日</span>
+            <span class="weekday">月</span>
+            <span class="weekday">火</span>
+            <span class="weekday">水</span>
+            <span class="weekday">木</span>
+            <span class="weekday">金</span>
+            <span class="weekday sat">土</span>
+          </div>
+          <div id="calendar-days" class="calendar-days"></div>
+        </div>
+
+        <div class="calendar-loading" id="calendar-loading">
+          <div class="spinner"></div>
+          <p>読み込み中...</p>
+        </div>
+      </div>
+
+      <!-- Time Slots (shown after selecting a date) -->
+      <div id="time-slots-container" class="time-slots-container hidden">
+        <h3 id="selected-date-title" class="time-slots-title"></h3>
+        <div id="time-slots" class="time-slots"></div>
+      </div>
+    </section>
+
+    <!-- STEP 2: User Info Form -->
+    <section id="step-form" class="booking-step">
+      <div class="section-header-booking">
+        <h2 class="section-title-booking">ご予約情報の入力</h2>
+        <p class="section-desc-booking">以下の必要事項をご入力ください</p>
+      </div>
+
+      <div class="selected-datetime-badge" id="selected-datetime-badge"></div>
+
+      <form id="booking-form" class="booking-form">
+        <div class="form-group">
+          <label for="booking-name">お名前 <span class="required">必須</span></label>
+          <input type="text" id="booking-name" name="name" required placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label for="booking-email">メールアドレス <span class="required">必須</span></label>
+          <input type="email" id="booking-email" name="email" required placeholder="example@example.com">
+          <p class="form-hint">※ 予約確認メール・ビデオ通話リンクをお送りします</p>
+        </div>
+        <div class="form-group">
+          <label for="booking-message">ご相談内容（任意）</label>
+          <textarea id="booking-message" name="message" rows="4"
+            placeholder="事前にお伝えしておきたいことがあればご記入ください"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" id="back-to-calendar">← 日時選択に戻る</button>
+          <button type="submit" class="btn-primary">確認画面へ →</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- STEP 3: Confirmation -->
+    <section id="step-confirm" class="booking-step">
+      <div class="section-header-booking">
+        <h2 class="section-title-booking">ご予約内容の確認</h2>
+        <p class="section-desc-booking">以下の内容でよろしければ「予約を確定する」を押してください</p>
+      </div>
+
+      <div class="confirm-card">
+        <div class="confirm-row">
+          <span class="confirm-label">プラン</span>
+          <span class="confirm-value">お試しオンライン相談（1回）</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">料金</span>
+          <span class="confirm-value">¥2,980（税込）</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">日時</span>
+          <span class="confirm-value" id="confirm-datetime"></span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">お名前</span>
+          <span class="confirm-value" id="confirm-name"></span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">メール</span>
+          <span class="confirm-value" id="confirm-email"></span>
+        </div>
+        <div class="confirm-row" id="confirm-message-row">
+          <span class="confirm-label">相談内容</span>
+          <span class="confirm-value" id="confirm-message"></span>
+        </div>
+      </div>
+
+      <div class="payment-notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+          <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>
+        <p>「予約を確定する」を押すと、安全なStripe決済画面に移動します。<br>決済完了後、ご予約が確定し確認メールが届きます。</p>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" id="back-to-form">← 入力に戻る</button>
+        <button type="button" class="btn-primary btn-confirm" id="submit-booking">
+          <span class="btn-text">予約を確定する</span>
+          <span class="btn-loading hidden">
+            <span class="spinner-sm"></span> 処理中...
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Error Display -->
+    <div id="error-toast" class="error-toast hidden">
+      <span id="error-message"></span>
+      <button class="error-close" id="error-close">×</button>
+    </div>
+  </main>
+
+  <footer class="booking-footer">
+    <p>&copy; 2026 Health Consulting. All Rights Reserved.</p>
+  </footer>
+
+  <script src="booking.js"></script>
+</body>
+
+</html>

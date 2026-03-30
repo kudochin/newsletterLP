@@ -1,0 +1,12 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+[functions]
+  node_bundler = "esbuild"
+
+# Stripe webhook redirect
+[[redirects]]
+  from = "/api/stripe-webhook"
+  to = "/.netlify/functions/confirm-booking"
+  status = 200
