@@ -7,6 +7,7 @@ const { Resend } = require("resend");
  * 1. Update booking status to "confirmed"
  * 2. Send confirmation email with Google Meet link
  * 3. Notify admin
+ * 4. Add event to Google Calendar
  */
 exports.handler = async (event) => {
   const headers = {
@@ -98,7 +99,88 @@ exports.handler = async (event) => {
     const dayNames = ["日", "月", "火", "水", "木", "金", "土"];
     const dayOfWeek = dayNames[dateObj.getDay()];
 
-    // Send confirmation emails
+    // ---- Google Calendar Integration ----
+    let calendarEventCreated = false;
+    try {
+      const serviceAccountKeyStr = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+      const calendarId = process.env.GOOGLE_CALENDAR_ID;
+
+      if (serviceAccountKeyStr && calendarId) {
+        const { google } = require("googleapis");
+        const serviceAccountKey = JSON.parse(serviceAccountKeyStr);
+
+        const auth = new google.auth.JWT(
+          serviceAccountKey.client_email,
+          null,
+          serviceAccountKey.private_key,
+          ["https://www.googleapis.com/auth/calendar"]
+        );
+
+        const calendar = google.calendar({ version: "v3", auth });
+
+        // Parse time to create start/end datetime
+        const [hours, minutes] = time.split(":").map(Number);
+        const startDate = new Date(dateObj);
+        startDate.setHours(hours, minutes, 0, 0);
+
+        // Session duration: 60 minutes
+        const endDate = new Date(startDate);
+        endDate.setMinutes(endDate.getMinutes() + 60);
+
+        // Format as ISO string with timezone offset (+09:00)
+        const formatJST = (d) => {
+          const pad = (n) => String(n).padStart(2, "0");
+          return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}+09:00`;
+        };
+
+        const calendarEvent = {
+          summary: `【オンライン相談】${name}様`,
+          description: [
+            `■ お客様情報`,
+            `名前: ${name}`,
+            `メール: ${email}`,
+            ``,
+            `■ プラン`,
+            `お試しオンライン相談（1回） ¥2,980`,
+            ``,
+            message ? `■ ご相談内容\n${message}` : "",
+            ``,
+            `■ Stripe Session ID`,
+            session.id,
+          ].filter(Boolean).join("\n"),
+          start: {
+            dateTime: formatJST(startDate),
+            timeZone: "Asia/Tokyo",
+          },
+          end: {
+            dateTime: formatJST(endDate),
+            timeZone: "Asia/Tokyo",
+          },
+          reminders: {
+            useDefault: false,
+            overrides: [
+              { method: "popup", minutes: 30 },
+              { method: "popup", minutes: 10 },
+            ],
+          },
+        };
+
+        await calendar.events.insert({
+          calendarId: calendarId,
+          resource: calendarEvent,
+        });
+
+        calendarEventCreated = true;
+        console.log("Google Calendar event created successfully");
+      } else {
+        console.log("Google Calendar not configured (missing GOOGLE_SERVICE_ACCOUNT_KEY or GOOGLE_CALENDAR_ID)");
+      }
+    } catch (calErr) {
+      console.error("Failed to create Google Calendar event:", calErr);
+      // Don't fail the webhook — calendar is a nice-to-have
+    }
+
+    // ---- Send confirmation emails ----
     const resendApiKey = process.env.RESEND_API_KEY;
     const adminEmail = process.env.ADMIN_EMAIL || "kudochinpt@gmail.com";
     const meetingUrl = process.env.MEETING_URL || "（ビデオ通話URLは後日お送りします）";
@@ -197,10 +279,13 @@ exports.handler = async (event) => {
         await resend.emails.send({
           from: "Health Consulting <onboarding@resend.dev>",
           to: [adminEmail],
-          subject: `【決済完了・予約確定】${formattedDate}（${dayOfWeek}）${time} - ${name}様`,
+          subject: `【予約が入りました！】${formattedDate}（${dayOfWeek}）${time} - ${name}様`,
           html: `
             <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #1E2D3D;">予約が確定しました（決済完了）</h2>
+              <h2 style="color: #1E2D3D;">🎉 予約が入りました！</h2>
+              <p style="color: #4A5E70; font-size: 14px; line-height: 1.8;">
+                決済が完了し、予約が確定しました。${calendarEventCreated ? "Googleカレンダーにも自動で追加されています。" : ""}
+              </p>
               <table style="width: 100%; font-size: 14px; color: #4A5E70; border-collapse: collapse;">
                 <tr><td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #eee;">日時</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${formattedDate}（${dayOfWeek}） ${time}</td></tr>
                 <tr><td style="padding: 8px; font-weight: bold; border-bottom: 1px solid #eee;">お名前</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${name}</td></tr>

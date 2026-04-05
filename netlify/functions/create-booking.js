@@ -109,7 +109,7 @@ exports.handler = async (event) => {
     await bookingsStore.setJSON(month, bookings);
 
     // Determine the site URL for redirects
-    const siteUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || "https://kudochin-health.netlify.app";
+    const siteUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || "https://rad-chebakia-a45187.netlify.app";
 
     // Try to create Stripe Checkout Session
     const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
