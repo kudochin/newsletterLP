@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sessionStorage.setItem('admin_pwd', adminPassword);
       initAdmin();
     } catch (err) {
+      DOM.loginError.textContent = "ログインエラー: " + err.message;
       DOM.loginError.classList.remove('hidden');
     }
   });
