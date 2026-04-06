@@ -23,7 +23,7 @@ exports.handler = async (event) => {
   }
 
   try {
-    const availabilityStore = getStore("availability");
+    const availabilityStore = getStore({ name: "availability", siteID: "d2a3ebaa-7b96-4e48-8b25-ca615473749e", token: process.env.NETLIFY_API_TOKEN });
 
     if (event.httpMethod === "GET") {
       // Get availability for a month

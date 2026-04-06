@@ -36,7 +36,7 @@ exports.handler = async (event) => {
       };
     }
 
-    const bookingsStore = getStore("bookings");
+    const bookingsStore = getStore({ name: "bookings", siteID: "d2a3ebaa-7b96-4e48-8b25-ca615473749e", token: process.env.NETLIFY_API_TOKEN });
 
     let bookings = {};
     try {

@@ -25,8 +25,8 @@ exports.handler = async (event) => {
       };
     }
 
-    const availabilityStore = getStore("availability");
-    const bookingsStore = getStore("bookings");
+    const availabilityStore = getStore({ name: "availability", siteID: "d2a3ebaa-7b96-4e48-8b25-ca615473749e", token: process.env.NETLIFY_API_TOKEN });
+    const bookingsStore = getStore({ name: "bookings", siteID: "d2a3ebaa-7b96-4e48-8b25-ca615473749e", token: process.env.NETLIFY_API_TOKEN });
 
     // Get availability for the month
     let availability = {};
