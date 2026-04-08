@@ -337,6 +337,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ---- Form Data Persistence (sessionStorage) ----
+  // Saves booking form data so it isn't lost if user navigates away
+  const BOOKING_STORAGE_KEY = 'bookingFormData';
+  const bookingFields = DOM.bookingForm.querySelectorAll('input, textarea');
+
+  // Restore saved data
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(BOOKING_STORAGE_KEY));
+    if (saved) {
+      bookingFields.forEach(field => {
+        if (field.name && saved[field.name] !== undefined && field.type !== 'checkbox') {
+          field.value = saved[field.name];
+        }
+      });
+    }
+  } catch (e) { /* ignore */ }
+
+  // Save on input
+  const saveBookingData = () => {
+    const data = {};
+    bookingFields.forEach(field => {
+      if (field.name && field.type !== 'checkbox') {
+        data[field.name] = field.value;
+      }
+    });
+    sessionStorage.setItem(BOOKING_STORAGE_KEY, JSON.stringify(data));
+  };
+
+  bookingFields.forEach(field => {
+    field.addEventListener('input', saveBookingData);
+    field.addEventListener('change', saveBookingData);
+  });
+
+  // Clear on successful submission
+  DOM.submitBtn.addEventListener('click', () => {
+    sessionStorage.removeItem(BOOKING_STORAGE_KEY);
+  }, { once: true });
+
   // ---- Initialize ----
   async function init() {
     const monthKey = getMonthKey(state.currentYear, state.currentMonth);

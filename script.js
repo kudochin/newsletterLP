@@ -176,4 +176,45 @@ document.addEventListener('DOMContentLoaded', () => {
     startSlideshow();
   }, 1500);
 
+  // ----- Form Data Persistence (sessionStorage) -----
+  // Saves form data so it isn't lost when navigating to terms page and back
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    const STORAGE_KEY = 'contactFormData';
+    const formFields = contactForm.querySelectorAll('input, textarea, select');
+
+    // Restore saved data on page load
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
+      if (saved) {
+        formFields.forEach(field => {
+          if (field.name && saved[field.name] !== undefined && field.type !== 'checkbox') {
+            field.value = saved[field.name];
+          }
+        });
+      }
+    } catch (e) { /* ignore parse errors */ }
+
+    // Save data on every input change
+    const saveFormData = () => {
+      const data = {};
+      formFields.forEach(field => {
+        if (field.name && field.type !== 'checkbox') {
+          data[field.name] = field.value;
+        }
+      });
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    };
+
+    formFields.forEach(field => {
+      field.addEventListener('input', saveFormData);
+      field.addEventListener('change', saveFormData);
+    });
+
+    // Clear saved data on successful submission
+    contactForm.addEventListener('submit', () => {
+      sessionStorage.removeItem(STORAGE_KEY);
+    });
+  }
+
 });
