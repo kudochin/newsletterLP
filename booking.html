@@ -135,6 +135,12 @@
           <textarea id="booking-message" name="message" rows="4"
             placeholder="事前にお伝えしておきたいことがあればご記入ください"></textarea>
         </div>
+        <div class="form-group terms-consent" style="text-align: center; margin: 1.5rem 0;">
+          <label style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem;">
+            <input type="checkbox" id="booking-consent" name="consent" required style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
+            <span><a href="terms.html" target="_blank" style="color: var(--accent-pink-dark); text-decoration: underline;">利用規約・免責事項</a>を確認し、同意します</span>
+          </label>
+        </div>
         <div class="form-actions">
           <button type="button" class="btn-secondary" id="back-to-calendar">← 日時選択に戻る</button>
           <button type="submit" class="btn-primary">確認画面へ →</button>
@@ -203,8 +209,9 @@
   </main>
 
   <footer class="booking-footer">
-    <div style="margin-bottom: 0.8rem;">
+    <div style="margin-bottom: 0.8rem; display: flex; justify-content: center; gap: 1rem;">
       <a href="law.html" style="color: var(--text-light); text-decoration: none;">特定商取引法に基づく表記</a>
+      <a href="terms.html" style="color: var(--text-light); text-decoration: none;">利用規約・免責事項</a>
     </div>
     <p>&copy; 2026 Health Consulting. All Rights Reserved.</p>
   </footer>
