@@ -176,12 +176,15 @@ document.addEventListener('DOMContentLoaded', () => {
     startSlideshow();
   }, 1500);
 
-  // ----- Form Data Persistence (sessionStorage) -----
-  // Saves form data so it isn't lost when navigating to terms page and back
-  const contactForm = document.querySelector('.contact-form');
+  // ----- Contact Form: 3-Step Flow (Input → Confirm → Complete) -----
+  const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     const STORAGE_KEY = 'contactFormData';
     const formFields = contactForm.querySelectorAll('input, textarea, select');
+
+    const stepInput = document.getElementById('contact-step-input');
+    const stepConfirm = document.getElementById('contact-step-confirm');
+    const stepComplete = document.getElementById('contact-step-complete');
 
     // Restore saved data on page load
     try {
@@ -193,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
-    } catch (e) { /* ignore parse errors */ }
+    } catch (e) { /* ignore */ }
 
     // Save data on every input change
     const saveFormData = () => {
@@ -211,9 +214,87 @@ document.addEventListener('DOMContentLoaded', () => {
       field.addEventListener('change', saveFormData);
     });
 
-    // Clear saved data on successful submission
-    contactForm.addEventListener('submit', () => {
-      sessionStorage.removeItem(STORAGE_KEY);
+    // STEP 1 → STEP 2: Show confirmation
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const consent = document.getElementById('consent').checked;
+
+      // Validate
+      if (!name) { alert('お名前を入力してください'); return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('正しいメールアドレスを入力してください'); return; }
+      if (!message) { alert('ご相談内容を入力してください'); return; }
+      if (!consent) { alert('利用規約・免責事項への同意が必要です'); return; }
+
+      // Populate confirm screen
+      document.getElementById('confirm-name').textContent = name;
+      document.getElementById('confirm-email').textContent = email;
+      document.getElementById('confirm-age').textContent = document.getElementById('age').value || '未回答';
+      document.getElementById('confirm-message').textContent = message;
+
+      // Switch to confirm step
+      stepInput.style.display = 'none';
+      stepConfirm.style.display = 'block';
+      stepComplete.style.display = 'none';
+
+      // Scroll to top of contact section
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // STEP 2 → STEP 1: Back to edit
+    document.getElementById('contact-back-btn').addEventListener('click', () => {
+      stepInput.style.display = 'block';
+      stepConfirm.style.display = 'none';
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // STEP 2 → STEP 3: Send email via API
+    document.getElementById('contact-send-btn').addEventListener('click', async () => {
+      const sendBtn = document.getElementById('contact-send-btn');
+      const btnText = document.getElementById('send-btn-text');
+      const btnLoading = document.getElementById('send-btn-loading');
+
+      sendBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+
+      try {
+        const res = await fetch('/.netlify/functions/send-contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            age: document.getElementById('age').value,
+            message: document.getElementById('message').value.trim(),
+          }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || '送信に失敗しました');
+        }
+
+        // Clear form and storage
+        contactForm.reset();
+        sessionStorage.removeItem(STORAGE_KEY);
+
+        // Switch to complete step
+        stepInput.style.display = 'none';
+        stepConfirm.style.display = 'none';
+        stepComplete.style.display = 'block';
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } catch (err) {
+        alert(err.message || '送信中にエラーが発生しました。時間を置いて再度お試しください。');
+        sendBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      }
     });
   }
 

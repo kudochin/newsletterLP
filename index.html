@@ -629,44 +629,98 @@
     </div>
 
     <div class="contact-form-wrapper reveal">
-      <form action="#" method="POST" class="contact-form">
-        <div class="form-group">
-          <label for="name">お名前 <span class="required">必須</span></label>
-          <input type="text" id="name" name="name" required placeholder="山田 太郎">
-        </div>
-        <div class="form-group">
-          <label for="email">メールアドレス <span class="required">必須</span></label>
-          <input type="email" id="email" name="email" required placeholder="example@example.com">
-        </div>
-        <div class="form-group">
-          <label for="age">ご年齢</label>
-          <select id="age" name="age">
-            <option value="">選択してください</option>
-            <option value="20代">20代</option>
-            <option value="30代">30代</option>
-            <option value="40代">40代</option>
-            <option value="50代">50代</option>
-            <option value="60代以上">60代以上</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">ご相談内容 <span class="required">必須</span></label>
-          <p style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.5rem;">
-            「どこがいつから痛いか？」など詳細に教えていただけると、より的確なアドバイスが可能です。自由に記入してください。
+      <!-- STEP 1: 入力フォーム -->
+      <div id="contact-step-input">
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name">お名前 <span class="required">必須</span></label>
+            <input type="text" id="name" name="name" required placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス <span class="required">必須</span></label>
+            <input type="email" id="email" name="email" required placeholder="example@example.com">
+          </div>
+          <div class="form-group">
+            <label for="age">ご年齢</label>
+            <select id="age" name="age">
+              <option value="">選択してください</option>
+              <option value="20代">20代</option>
+              <option value="30代">30代</option>
+              <option value="40代">40代</option>
+              <option value="50代">50代</option>
+              <option value="60代以上">60代以上</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">ご相談内容 <span class="required">必須</span></label>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.5rem;">
+              「どこがいつから痛いか？」など詳細に教えていただけると、より的確なアドバイスが可能です。自由に記入してください。
+            </p>
+            <textarea id="message" name="message" rows="6" class="conversational-placeholder" required placeholder="【記入例】2週間前くらいから、歩いていると右の膝が痛く感じるようになってきました。何もしなければ痛くないのですが、5分くらい歩くとズキズキ痛くなってきます。病院に行くべきですか？または自宅でできるケアはありますか？"></textarea>
+          </div>
+          <div class="form-group terms-consent" style="text-align: center; margin: 1.5rem 0;">
+            <label style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem;">
+              <input type="checkbox" id="consent" name="consent" required style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
+              <span><a href="terms.html" target="_blank" style="color: var(--accent-pink-dark); text-decoration: underline;">利用規約・免責事項</a>を確認し、同意します</span>
+            </label>
+          </div>
+          <button type="submit" class="submit-btn" id="submit-btn">入力内容を確認する</button>
+          <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 1rem; text-align: center; line-height: 1.6;">
+            ※ できるだけ数日以内に返信いたしますが、事情により返信が遅くなってしまう場合がありますので、あらかじめご了承ください。
           </p>
-          <textarea id="message" name="message" rows="6" class="conversational-placeholder" required placeholder="【記入例】2週間前くらいから、歩いていると右の膝が痛く感じるようになってきました。何もしなければ痛くないのですが、5分くらい歩くとズキズキ痛くなってきます。病院に行くべきですか？または自宅でできるケアはありますか？"></textarea>
+        </form>
+      </div>
+
+      <!-- STEP 2: 確認画面 -->
+      <div id="contact-step-confirm" style="display: none;">
+        <div style="background: var(--white); border-radius: 16px; padding: 2.5rem; border: 1px solid var(--border-color); max-width: 560px; margin: 0 auto;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.2rem; text-align: center; margin-bottom: 2rem; letter-spacing: 0.1em; color: var(--text-primary);">入力内容のご確認</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-weight: 500; width: 120px; vertical-align: top; font-size: 0.9rem; color: var(--text-secondary);">お名前</td>
+              <td id="confirm-name" style="padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;"></td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-weight: 500; vertical-align: top; font-size: 0.9rem; color: var(--text-secondary);">メールアドレス</td>
+              <td id="confirm-email" style="padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;"></td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-weight: 500; vertical-align: top; font-size: 0.9rem; color: var(--text-secondary);">ご年齢</td>
+              <td id="confirm-age" style="padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem;"></td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem 0; font-weight: 500; vertical-align: top; font-size: 0.9rem; color: var(--text-secondary);">ご相談内容</td>
+              <td id="confirm-message" style="padding: 1rem 0; font-size: 0.95rem; white-space: pre-wrap; line-height: 1.8;"></td>
+            </tr>
+          </table>
+          <div style="display: flex; gap: 1rem; margin-top: 2rem; justify-content: center; flex-wrap: wrap;">
+            <button type="button" id="contact-back-btn" style="padding: 0.9rem 2rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--white); color: var(--text-secondary); font-family: inherit; font-size: 0.9rem; cursor: pointer; transition: background 0.3s, transform 0.3s; letter-spacing: 0.05em;">← 修正する</button>
+            <button type="button" id="contact-send-btn" style="padding: 0.9rem 2.5rem; border-radius: 8px; border: none; background: var(--accent-pink); color: var(--white); font-family: inherit; font-size: 0.9rem; cursor: pointer; transition: background 0.3s, transform 0.3s; letter-spacing: 0.05em; font-weight: 500;">
+              <span id="send-btn-text">送信する</span>
+              <span id="send-btn-loading" style="display: none;">送信中...</span>
+            </button>
+          </div>
         </div>
-        <div class="form-group terms-consent" style="text-align: center; margin: 1.5rem 0;">
-          <label style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem;">
-            <input type="checkbox" id="consent" name="consent" required style="width: 1.2rem; height: 1.2rem; cursor: pointer;">
-            <span><a href="terms.html" target="_blank" style="color: var(--accent-pink-dark); text-decoration: underline;">利用規約・免責事項</a>を確認し、同意します</span>
-          </label>
+      </div>
+
+      <!-- STEP 3: 完了画面 -->
+      <div id="contact-step-complete" style="display: none;">
+        <div style="background: var(--white); border-radius: 16px; padding: 3rem 2.5rem; border: 1px solid var(--border-color); max-width: 560px; margin: 0 auto; text-align: center;">
+          <div style="width: 64px; height: 64px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-pink-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.3rem; letter-spacing: 0.1em; margin-bottom: 1.5rem; color: var(--text-primary);">ご相談を承りました</h3>
+          <p style="font-size: 0.95rem; line-height: 2; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            返信までに<strong style="color: var(--accent-pink-dark);">2〜3日</strong>を頂いておりますので、<br>少々お待ちください。
+          </p>
+          <p style="font-size: 0.85rem; line-height: 1.9; color: var(--text-light); background: var(--off-white); padding: 1.2rem; border-radius: 8px; text-align: left;">
+            ※ もし期間を過ぎても返信がない場合は、お手数ですが、もう一度メールを送信していただくか、<a href="https://x.com/kudochinPT" target="_blank" rel="noopener noreferrer" style="color: var(--accent-pink-dark); text-decoration: underline;">X（Twitter）</a>または<a href="https://www.instagram.com/kudochin_ptxhealthcare?igsh=bXM1Y2VmNGwyM2p4&utm_source=qr" target="_blank" rel="noopener noreferrer" style="color: var(--accent-pink-dark); text-decoration: underline;">Instagram</a>にDMをください。
+          </p>
+          <a href="/" style="display: inline-block; margin-top: 2rem; padding: 0.9rem 2.5rem; background: var(--accent-pink); color: var(--white); border-radius: 8px; font-size: 0.9rem; letter-spacing: 0.1em; font-weight: 500; transition: background 0.3s, transform 0.3s;">トップページへ戻る</a>
         </div>
-        <button type="submit" class="submit-btn" id="submit-btn">メールを送信する</button>
-        <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 1rem; text-align: center; line-height: 1.6;">
-          ※ できるだけ数日以内に返信いたしますが、事情により返信が遅くなってしまう場合がありますので、あらかじめご了承ください。
-        </p>
-      </form>
+      </div>
     </div>
   </section>
 
